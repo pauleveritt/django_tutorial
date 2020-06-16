@@ -11,11 +11,14 @@ class Question(models.Model):
     def __str__(self):
         return self.question_text
 
-    def was_published_recently(self):
+    # Todo: 4. Alter the signature of this method from 't' to a meaningful name
+    def was_published_recently(self, t=datetime.timedelta(days=1)):
         now = timezone.now()
-        return now - datetime.timedelta(days=1) <= self.pub_date <= now
+        return now - t <= self.pub_date <= now
 
 
+# Todo: 5. Although 'Choice' sounds accurate, your boss decided that it should be called 'Option'
+# Remember that this will require you to run a new migration
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
