@@ -7,7 +7,6 @@ from django.utils import timezone
 from .models import Question, Choice
 
 
-# Todo: 1. Make this view follow the conventions by adding IndexView to it
 class Index(generic.ListView):
     model = Question
     template_name = 'polls/index.html'
@@ -20,8 +19,7 @@ class Index(generic.ListView):
         ).order_by('-pub_date')[:5]
 
 
-# Todo: 2. Rename DetailClass to QuestionDetailView
-class DetailClass(generic.DetailView):
+class Detail_class(generic.DetailView):
     model = Question
     template_name = 'polls/detail.html'
 
@@ -32,8 +30,7 @@ class DetailClass(generic.DetailView):
         return Question.objects.filter(pub_date__lte=timezone.now())
 
 
-# Todo: 3. Rename Results to ResultsView and put it into the right conventions
-class Results(generic.DetailView):
+class Res(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
 
