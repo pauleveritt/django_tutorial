@@ -7,7 +7,7 @@ from django.utils import timezone
 from .models import Question, Choice
 
 
-class IndexView(generic.ListView):
+class Index(generic.ListView):
     model = Question
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
@@ -19,7 +19,7 @@ class IndexView(generic.ListView):
         ).order_by('-pub_date')[:5]
 
 
-class DetailView(generic.DetailView):
+class Detail_class(generic.DetailView):
     model = Question
     template_name = 'polls/detail.html'
 
@@ -30,7 +30,7 @@ class DetailView(generic.DetailView):
         return Question.objects.filter(pub_date__lte=timezone.now())
 
 
-class ResultsView(generic.DetailView):
+class Res(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
 
